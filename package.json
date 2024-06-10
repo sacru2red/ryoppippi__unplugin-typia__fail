@@ -1,11 +1,14 @@
 {
   "devDependencies": {
+    "@ryoppippi/unplugin-typia": "npm:@jsr/ryoppippi__unplugin-typia@^0.3.8",
     "@types/node": "^20.14.2",
     "@webpack-cli/generators": "^3.0.7",
     "html-webpack-plugin": "^5.6.0",
     "prettier": "^3.3.1",
     "ts-loader": "^9.5.1",
-    "typescript": "^5.4.5",
+    "ts-node": "^10.9.2",
+    "ts-patch": "^3.2.0",
+    "typescript": "^5.4.2",
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4",
@@ -20,10 +23,11 @@
     "build:prod": "npm run register-config-webpack-to-ts-node webpack --mode=production --node-env=production",
     "watch": "npm run register-config-webpack-to-ts-node webpack --watch",
     "serve": "npm run register-config-webpack-to-ts-node webpack serve",
-    "register-config-webpack-to-ts-node": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\""
+    "register-config-webpack-to-ts-node": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\"",
+    "prepare": "ts-patch install && typia patch"
   },
   "dependencies": {
     "cross-env": "^7.0.3",
-    "ts-node": "^10.9.2"
+    "typia": "^6.0.6"
   }
 }

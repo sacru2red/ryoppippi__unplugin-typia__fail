@@ -5,7 +5,14 @@
     "module": "ESNext",
     "target": "ESNext",
     "moduleResolution": "Bundler",
-    "allowJs": true
+    "allowJs": true,
+    "plugins": [
+      {
+        "transform": "typia/lib/transform"
+      }
+    ],
+    "strictNullChecks": true,
+    "strict": true
   },
   "files": [
     "src/index.ts"
