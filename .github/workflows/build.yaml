@@ -1,0 +1,32 @@
+name: build
+
+on:
+  push:
+
+jobs:
+  build-test:
+    strategy:
+      matrix:
+        node-version: [18, 20, 22]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      # node setup
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+
+  action-timeline:
+    needs:
+      - build-test
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Kesin11/actions-timeline@v2
