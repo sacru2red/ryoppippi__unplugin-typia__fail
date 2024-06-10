@@ -1,13 +1,14 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
-
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
+import 'webpack-dev-server'
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import WorkboxWebpackPlugin from 'workbox-webpack-plugin';
+import { Configuration } from 'webpack';
 
 const isProduction = process.env.NODE_ENV == 'production';
 
 
-const config = {
+const config: Configuration = {
     entry: './src/index.ts',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -49,7 +50,9 @@ module.exports = () => {
     if (isProduction) {
         config.mode = 'production';
         
-        
+        if (config.plugins == null) {
+            config.plugins = []
+        }
         config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());
         
     } else {

@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@types/node": "^20.14.2",
     "@webpack-cli/generators": "^3.0.7",
     "html-webpack-plugin": "^5.6.0",
     "prettier": "^3.3.1",
@@ -14,10 +15,15 @@
   "description": "My webpack project",
   "name": "my-webpack-project",
   "scripts": {
-    "build": "webpack --mode=production --node-env=production",
-    "build:dev": "webpack --mode=development",
-    "build:prod": "webpack --mode=production --node-env=production",
-    "watch": "webpack --watch",
-    "serve": "webpack serve"
+    "build": "npm run register-config-webpack-to-ts-node webpack --mode=production --node-env=production",
+    "build:dev": "npm run register-config-webpack-to-ts-node webpack --mode=development",
+    "build:prod": "npm run register-config-webpack-to-ts-node webpack --mode=production --node-env=production",
+    "watch": "npm run register-config-webpack-to-ts-node webpack --watch",
+    "serve": "npm run register-config-webpack-to-ts-node webpack serve",
+    "register-config-webpack-to-ts-node": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\""
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "ts-node": "^10.9.2"
   }
 }
