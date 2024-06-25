@@ -4,10 +4,9 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import WorkboxWebpackPlugin from 'workbox-webpack-plugin';
 import { Configuration } from 'webpack';
-// import unpluginTypia from '@ryoppippi/unplugin-typia/webpack'
 
-const jiti = require("jiti")();
-const unpluginTypia = jiti("@ryoppippi/unplugin-typia/webpack").default;
+const jiti = require('jiti')(__filename)
+const { default: UnpluginTypia } = jiti('@ryoppippi/unplugin-typia/webpack')
 const isProduction = process.env.NODE_ENV == 'production';
 
 
@@ -24,8 +23,7 @@ const config: Configuration = {
         new HtmlWebpackPlugin({
             template: 'index.html',
         }),
-        // require("@ryoppippi/unplugin-typia/webpack")()
-        unpluginTypia()     
+        UnpluginTypia()     
         // Add your plugins here
         // Learn more about plugins from https://webpack.js.org/configuration/plugins/
     ],
