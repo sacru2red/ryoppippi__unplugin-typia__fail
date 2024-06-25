@@ -11,14 +11,12 @@ to bundle your application
 # result
 
 ```
-[webpack-cli] Failed to load 'C:...\ryoppippi__unplugin-typia__fail\webpack.config.ts' config
-[webpack-cli] TypeError: Unknown file extension ".ts" for C:...\ryoppippi__unplugin-typia__fail\webpack.config.ts
-    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:160:9)
-    at defaultGetFormat (node:internal/modules/esm/get_format:203:36)
-    at defaultLoad (node:internal/modules/esm/load:143:22)
-    at async ModuleLoader.load (node:internal/modules/esm/loader:396:7)
-    at async ModuleLoader.moduleProvider (node:internal/modules/esm/loader:278:45)
-    at async link (node:internal/modules/esm/module_job:78:21) {
-  code: 'ERR_UNKNOWN_FILE_EXTENSION'
-}
+// index.mjs:2665 Uncaught Error: Error on typia.validate(): no transform has been configured. Read and follow https://typia.io/docs/setup please.
+//     at halt (index.mjs:2665:11)
+//     at validate (index.mjs:2575:5)
+//     at eval (index.ts:5:63)
+//     at ./src/index.ts (main.js:85:1)
+//     at __webpack_require__ (main.js:338:32)
+//     at main.js:1408:37
+//     at main.js:1410:12
 ```
