@@ -5,8 +5,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import WorkboxWebpackPlugin from 'workbox-webpack-plugin';
 import { Configuration } from 'webpack';
 
-const jiti = require('jiti')(__filename)
-const { default: UnpluginTypia } = jiti('@ryoppippi/unplugin-typia/webpack')
+const { default: UnpluginTypia } = await import('@ryoppippi/unplugin-typia/webpack')
 const isProduction = process.env.NODE_ENV == 'production';
 
 
