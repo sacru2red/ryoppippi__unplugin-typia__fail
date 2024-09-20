@@ -5,7 +5,6 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import WorkboxWebpackPlugin from 'workbox-webpack-plugin';
 import { Configuration } from 'webpack';
 
-const { default: UnpluginTypia } = await import('@ryoppippi/unplugin-typia/webpack')
 const isProduction = process.env.NODE_ENV == 'production';
 
 
@@ -22,7 +21,6 @@ const config: Configuration = {
         new HtmlWebpackPlugin({
             template: 'index.html',
         }),
-        UnpluginTypia()     
         // Add your plugins here
         // Learn more about plugins from https://webpack.js.org/configuration/plugins/
     ],
@@ -47,7 +45,7 @@ const config: Configuration = {
     },
 };
 
-module.exports = () => {
+module.exports = async() => {
     if (isProduction) {
         config.mode = 'production';
         
@@ -58,6 +56,11 @@ module.exports = () => {
         
     } else {
         config.mode = 'development';
+    }
+    const dynamicImport = new Function('specifier', 'return import(specifier)');
+    const { default: UnpluginTypia }  = await dynamicImport('@ryoppippi/unplugin-typia/webpack')
+    if (config.plugins) {
+        config.plugins.push(UnpluginTypia())
     }
     return config;
 };
